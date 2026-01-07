@@ -1,34 +1,29 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Tools from './assets/components/Tools'
+import Canvas from './assets/components/Canvas'
+import Actions from './assets/components/Actions'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [width, setWidth] = useState(16)
+  const [height, setHeight] = useState(16);
+  const [selectedColor, setSelectedColor] = useState('#fff');
+
+  const changeSize = (x:number, y:number) => {
+    setWidth(x);
+    setHeight(y);
+  }
+
+  const changeColor = (color:string) => {
+    setSelectedColor(color);
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <Tools/>
+      <Canvas width={width} height={height} selectedColor={selectedColor}/>
+      <Actions/>
+    </main>
   )
 }
 
