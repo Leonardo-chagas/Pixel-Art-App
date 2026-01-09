@@ -22,7 +22,7 @@ function App() {
     <main>
       <Tools/>
       <Canvas width={width} height={height} selectedColor={selectedColor}/>
-      <Actions/>
+      <Actions changeSize={changeSize}/>
     </main>
   )
 }

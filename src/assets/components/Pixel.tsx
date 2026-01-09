@@ -28,7 +28,7 @@ function Pixel({selectedColor}:PixelProps){
     }
 
     return(
-        <div className='pixel' onClick={applyColor} onMouseEnter={changeColorOnHover} onMouseLeave={resetColor}></div>
+        <div className='pixel' onClick={applyColor} onMouseEnter={changeColorOnHover} onMouseLeave={resetColor} style={{backgroundColor:pixelColor}}></div>
     )
 }
 
