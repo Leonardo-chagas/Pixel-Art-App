@@ -1,0 +1,5 @@
+.menu {
+    border: 1px white solid;
+    display: flex;
+    flex-direction: column;
+}

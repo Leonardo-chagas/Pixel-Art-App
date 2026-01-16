@@ -1,4 +1,5 @@
 import '../css/Actions.css'
+import '../css/Container.css'
 import { useState } from 'react'
 
 type ActionsProps = {
@@ -20,7 +21,7 @@ function Actions({changeSize}:ActionsProps){
     }
 
     return(
-        <div>
+        <div className='menu'>
             <div>
                 <div>
                     <span>X</span>
