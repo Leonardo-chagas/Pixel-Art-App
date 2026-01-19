@@ -1,23 +1,37 @@
 import { useState } from 'react'
 import '../css/Pixel.css'
+import type { ToolTypes } from '../../Types';
 
 type PixelProps = {
-    selectedColor: string
+    selectedColor: string,
+    tool:ToolTypes,
+    changeColor: Function
 }
 
-function Pixel({selectedColor}:PixelProps){
+function Pixel({selectedColor, tool, changeColor}:PixelProps){
     const [pixelColor, setPixelColor] = useState('#fff');
     const [oldColor, setOldColor] = useState(pixelColor);
     const [canChangeColor, setCanChangeColor] = useState(true);
 
-    function applyColor() {
-        setPixelColor(selectedColor);
-        setCanChangeColor(false);
+    function pixelInteraction() {
+        if(tool.Brush){
+            setPixelColor(selectedColor);
+            setCanChangeColor(false);
+        }
+        else if(tool.Eraser){
+
+        }
+        else if(tool.Dropper){
+            console.log(pixelColor);
+            changeColor(pixelColor);
+        }
     }
 
     function changeColorOnHover() {
-        setOldColor(pixelColor);
-        setPixelColor(selectedColor);
+        if(tool.Brush){
+            setOldColor(pixelColor);
+            setPixelColor(selectedColor);
+        }
     }
 
     function resetColor() {
@@ -28,7 +42,7 @@ function Pixel({selectedColor}:PixelProps){
     }
 
     return(
-        <div className='pixel' onClick={applyColor} onMouseEnter={changeColorOnHover} onMouseLeave={resetColor} style={{backgroundColor:pixelColor}}></div>
+        <div className='pixel' onClick={pixelInteraction} onMouseEnter={changeColorOnHover} onMouseLeave={resetColor} style={{backgroundColor:pixelColor}}></div>
     )
 }
 

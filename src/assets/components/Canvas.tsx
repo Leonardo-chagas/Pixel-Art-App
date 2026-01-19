@@ -1,17 +1,20 @@
 import '../css/Canvas.css'
 import Row from './Row';
+import type { ToolTypes } from '../../Types';
 
 type CanvasProps = {
     width: number,
     height:number,
-    selectedColor: string
+    selectedColor: string,
+    tool:ToolTypes,
+    changeColor:Function
 }
 
-function Canvas({width, height, selectedColor}:CanvasProps){
+function Canvas({width, height, selectedColor, tool, changeColor}:CanvasProps){
     let rows = [];
 
     for(let i = 0; i < height; i++){
-        rows.push(<Row key={i} width={width} selectedColor={selectedColor}/>);
+        rows.push(<Row key={i} width={width} selectedColor={selectedColor} tool={tool} changeColor={changeColor}/>);
     }
     return(
         <div id='canvas'>
