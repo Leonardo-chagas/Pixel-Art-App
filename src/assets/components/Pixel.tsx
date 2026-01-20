@@ -3,13 +3,15 @@ import '../css/Pixel.css'
 import type { ToolTypes } from '../../Types';
 
 type PixelProps = {
+    originalColor: string,
     selectedColor: string,
     tool:ToolTypes,
     changeColor: Function
 }
 
-function Pixel({selectedColor, tool, changeColor}:PixelProps){
-    const [pixelColor, setPixelColor] = useState('#fff');
+function Pixel({originalColor, selectedColor, tool, changeColor}:PixelProps){
+    const baseColor = originalColor;
+    const [pixelColor, setPixelColor] = useState(originalColor);
     const [oldColor, setOldColor] = useState(pixelColor);
     const [canChangeColor, setCanChangeColor] = useState(true);
 
@@ -19,10 +21,11 @@ function Pixel({selectedColor, tool, changeColor}:PixelProps){
             setCanChangeColor(false);
         }
         else if(tool.Eraser){
-
+            console.log('erased');
+            setPixelColor(baseColor);
+            setCanChangeColor(false);
         }
         else if(tool.Dropper){
-            console.log(pixelColor);
             changeColor(pixelColor);
         }
     }
@@ -35,7 +38,7 @@ function Pixel({selectedColor, tool, changeColor}:PixelProps){
     }
 
     function resetColor() {
-        if(canChangeColor)
+        if(canChangeColor && tool.Brush)
             setPixelColor(oldColor);
 
         setCanChangeColor(true);

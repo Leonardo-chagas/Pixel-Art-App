@@ -31,7 +31,6 @@ function Tools({changeColor, selectedColor, tool, changeTool}:ToolsProps){
     }
 
     const handleColorChange = (color:{hex:string}) => {
-        console.log(color.hex);
         changeColor(color.hex);
     }
 
