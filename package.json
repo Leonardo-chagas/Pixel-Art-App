@@ -14,8 +14,11 @@
     "@fortawesome/free-regular-svg-icons": "^7.1.0",
     "@fortawesome/free-solid-svg-icons": "^7.1.0",
     "@fortawesome/react-fontawesome": "^3.1.1",
+    "downloadjs": "^1.4.7",
+    "html-to-image": "^1.11.13",
     "react": "^19.1.1",
     "react-color": "^2.19.3",
+    "react-component-export-image": "^1.0.6",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {

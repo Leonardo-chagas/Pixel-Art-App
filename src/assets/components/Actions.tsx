@@ -3,10 +3,11 @@ import '../css/Container.css'
 import { useState } from 'react'
 
 type ActionsProps = {
-    'changeSize':Function
+    'changeSize':Function,
+    'exportCanvas': Function
 }
 
-function Actions({changeSize}:ActionsProps){
+function Actions({changeSize, exportCanvas}:ActionsProps){
     const [width, setWidth] = useState(16);
     const [height, setHeight] = useState(16);
 
@@ -32,6 +33,7 @@ function Actions({changeSize}:ActionsProps){
                     <input type='number' value={height} onChange={handleHeightChange}></input>
                 </div>
                 <button onClick={() => changeSize(width, height)}>Resize</button>
+                <button onClick={() => exportCanvas()}>Export</button>
             </div>
         </div>
     )
