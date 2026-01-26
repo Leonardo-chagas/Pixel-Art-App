@@ -13,28 +13,30 @@ function Actions({changeSize, exportCanvas}:ActionsProps){
 
     const handleWidthChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         let value = parseInt(e.target.value);
+        if(value > 32) value = 32;
         setWidth(value);
     }
 
     const handleHeightChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
         let value = parseInt(e.target.value);
+        if(value > 32) value = 32;
         setHeight(value);
     }
 
     return(
         <div className='menu'>
             <div>
-                <div>
+                <div className='inputContainer'>
                     <span>X</span>
                     <input type='number' value={width} onChange={handleWidthChange}></input>
                 </div>
-                <div>
+                <div className='inputContainer'>
                     <span>Y</span>
                     <input type='number' value={height} onChange={handleHeightChange}></input>
                 </div>
                 <button onClick={() => changeSize(width, height)}>Resize</button>
-                <button onClick={() => exportCanvas()}>Export</button>
             </div>
+            <button onClick={() => exportCanvas()}>Export</button>
         </div>
     )
 }

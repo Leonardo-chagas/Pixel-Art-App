@@ -1,0 +1,13 @@
+.toolButton {
+    background-color: white;
+}
+
+#selected {
+    background-color: aqua;
+}
+
+#toolsContainer {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+}

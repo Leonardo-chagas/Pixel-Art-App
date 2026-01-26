@@ -30,7 +30,12 @@ function App() {
   }
 
   const changeTool = (newTool:ToolTypes) => {
-    setTool(newTool);
+    /* setTool(newTool); */
+    setTool({
+      'Brush':newTool.Brush,
+      'Eraser': newTool.Eraser,
+      'Dropper': newTool.Dropper,
+    })
   }
 
   const exportCanvas = () => {

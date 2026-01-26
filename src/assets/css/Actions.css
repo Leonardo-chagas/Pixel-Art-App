@@ -1,0 +1,13 @@
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+}
+
+input {
+    max-width: 50px;
+}
+
+span {
+    color: white;
+}

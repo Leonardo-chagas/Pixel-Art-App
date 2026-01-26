@@ -1,5 +1,6 @@
 import '../css/Tools.css'
 import '../css/Container.css'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaintBrush, faEraser, faEyeDropper } from '@fortawesome/free-solid-svg-icons'
 import {SketchPicker, type ColorChangeHandler} from 'react-color'
@@ -13,6 +14,13 @@ type ToolsProps = {
 }
 
 function Tools({changeColor, selectedColor, tool, changeTool}:ToolsProps){
+
+    /* const [tool, setTool] = useState(currentTool); */
+    /* let tool = {
+        'Brush':currentTool.Brush,
+        'Eraser': currentTool.Eraser,
+        'Dropper': currentTool.Dropper,
+    } */
 
     const handleToolChange = (newTool:string) => {
         tool.Brush = false;
@@ -36,14 +44,14 @@ function Tools({changeColor, selectedColor, tool, changeTool}:ToolsProps){
 
     return(
         <div className='menu'>
-            <div>
-                <div onClick={()=>handleToolChange('brush')}>
+            <div id='toolsContainer'>
+                <div className='toolButton' id={tool.Brush ? 'selected' : ''} onClick={()=>handleToolChange('brush')}>
                     <FontAwesomeIcon icon={faPaintBrush}/>
                 </div>
-                <div onClick={()=>handleToolChange('eraser')}>
+                <div className='toolButton' id={tool.Eraser ? 'selected' : ''} onClick={()=>handleToolChange('eraser')}>
                     <FontAwesomeIcon icon={faEraser}/>
                 </div>
-                <div onClick={()=>handleToolChange('dropper')}>
+                <div className='toolButton' id={tool.Dropper ? 'selected' : ''} onClick={()=>handleToolChange('dropper')}>
                     <FontAwesomeIcon icon={faEyeDropper}/>
                 </div>
             </div>
