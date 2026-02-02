@@ -1,9 +1,8 @@
 import '../css/Tools.css'
 import '../css/Container.css'
-import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaintBrush, faEraser, faEyeDropper } from '@fortawesome/free-solid-svg-icons'
-import {SketchPicker, type ColorChangeHandler} from 'react-color'
+import {SketchPicker} from 'react-color'
 import type { ToolTypes } from '../../Types'
 
 type ToolsProps = {
@@ -14,13 +13,6 @@ type ToolsProps = {
 }
 
 function Tools({changeColor, selectedColor, tool, changeTool}:ToolsProps){
-
-    /* const [tool, setTool] = useState(currentTool); */
-    /* let tool = {
-        'Brush':currentTool.Brush,
-        'Eraser': currentTool.Eraser,
-        'Dropper': currentTool.Dropper,
-    } */
 
     const handleToolChange = (newTool:string) => {
         tool.Brush = false;

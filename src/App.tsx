@@ -1,13 +1,13 @@
-import { useState, useRef, type RefObject, type ReactInstance } from 'react'
+import { useState, useRef } from 'react'
 import Tools from './assets/components/Tools'
 import Canvas from './assets/components/Canvas'
 import Actions from './assets/components/Actions'
 import './App.css'
 import type { ToolTypes } from './Types'
-/* import { exportComponentAsPNG } from 'react-component-export-image' */
-import * as htmlToImage from 'html-to-image'
-/* import { toPng } from 'html-to-image' */
 
+interface CanvasRef {
+    exportImage: () => void
+}
 
 function App() {
   const [width, setWidth] = useState(16)
@@ -18,7 +18,7 @@ function App() {
     'Eraser': false,
     'Dropper': false,
   });
-  const canvasRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<CanvasRef>(null);
 
   const changeSize = (x:number, y:number) => {
     setWidth(x);
@@ -30,7 +30,6 @@ function App() {
   }
 
   const changeTool = (newTool:ToolTypes) => {
-    /* setTool(newTool); */
     setTool({
       'Brush':newTool.Brush,
       'Eraser': newTool.Eraser,
@@ -39,20 +38,13 @@ function App() {
   }
 
   const exportCanvas = () => {
-    /* const newRef = canvasRef as RefObject<ReactInstance>
-    exportComponentAsPNG(newRef); */
-    htmlToImage.toPng(canvasRef.current!).then((dataUrl) => {
-      const link = document.createElement('a')
-      link.download = 'export.png'
-      link.href = dataUrl
-      link.click()
-    })
+   if(canvasRef.current !== null) canvasRef.current.exportImage();
   }
 
   return (
     <main>
       <Tools changeColor={changeColor} selectedColor={selectedColor} tool={tool} changeTool={changeTool}/>
-      <div ref={canvasRef}><Canvas width={width} height={height} selectedColor={selectedColor} tool={tool} changeColor={changeColor}/></div>
+      <Canvas ref={canvasRef} width={width} height={height} selectedColor={selectedColor} tool={tool} changeColor={changeColor}/>
       <Actions changeSize={changeSize} exportCanvas={exportCanvas}/>
     </main>
   )
